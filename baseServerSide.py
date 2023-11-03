@@ -38,26 +38,27 @@ def rand():
 
 def main():
     server_socket = socket.socket(socket.AF_INET, socket.STREAM)
-     try:
+    try:
         server_socket.bind(('0.0.0.0', 1729))
         server_socket.listen(QUEUE_LEN)
-        client_socket, client_address = server_socket.accept()
-        try:
-            request = client_socket.recv(MAX_PACKET).decode()
-            if(request == 'TIME'):
-                client_socket.send(time().encode())
-            elif(request == 'NAME'):
-                client_socket.send(NAME.encode())
-            elif(request == 'RAND'):
-                client_socket.send(rand().encode())
-            else:
-
-        except socket.error as err:
-            print('received socket error on client socket' + str(err))
-        finally:
-            client_socket.close()
+        while True:
+            client_socket, client_address = server_socket.accept()
+            try:
+                request = client_socket.recv(MAX_PACKET).decode()
+                if(request == 'TIME'):
+                    client_socket.send(time().encode())
+                elif(request == 'NAME'):
+                    client_socket.send(NAME.encode())
+                elif(request == 'RAND'):
+                    client_socket.send(rand().encode())
+                else:
+                    return
+            except socket.error as err:
+                print('received socket error on client socket' + str(err))
+            finally:
+                client_socket.close()
     except socket.error as err:
-        print('recevied socket error on server socket' + str(err))
+        print('received socket error on server socket' + str(err))
     finally:
         server_socket.close
 
