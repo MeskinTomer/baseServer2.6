@@ -1,0 +1,9 @@
+DEBUG:root:A client has connected to the server || address: 127.0.0.152357
+DEBUG:root:The command TIME has been received
+DEBUG:root:The message 21:03:46 has been sent
+DEBUG:root:The command RAND has been received
+DEBUG:root:The message 4 has been sent
+DEBUG:root:The command NAME has been received
+DEBUG:root:The message my name is jef has been sent
+DEBUG:root:The command EXIT has been received
+DEBUG:root:The client has been disconnected

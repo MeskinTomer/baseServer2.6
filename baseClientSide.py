@@ -11,6 +11,10 @@ to one client after another.
 """
 
 import socket
+import logging
+
+logging.basicConfig(filename='baseClient_log.log', level=logging.DEBUG)
+
 MAX_PACKET = 1024
 COMMANDS = ['TIME', 'NAME', 'RAND', 'EXIT']
 
@@ -35,16 +39,21 @@ def main():
             com = command()
             if com != 'Invalid':
                 my_socket.send(com.encode())
+                logging.debug('The command ' + com + ' has been sent to the server')
                 response = my_socket.recv(MAX_PACKET).decode()
+                logging.debug('The response ' + response + ' has been received')
                 print(response)
                 if response == 'You were disconnected':
+                    logging.debug('The server has disconnected the client')
                     break
             else:
                 print('Invalid command')
     except socket.error as err:
-        print("received socket error " + str(err))
+        logging.error('Received socket error ' + str(err))
+        print("Received socket error " + str(err))
     finally:
-        my_socket.close
+        my_socket.close()
+        logging.debug('The client socket has been closed')
 
 
 if __name__ == '__main__':

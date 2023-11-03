@@ -10,11 +10,12 @@ The client is able to send multiple commands until the command 'EXIT', while the
 to one client after another.
 """
 
-import logging
 import socket
+import logging
 import random
 from datetime import datetime
 
+logging.basicConfig(filename='baseServer_log.log', level=logging.DEBUG)
 
 MAX_PACKET = 4
 QUEUE_LEN = 1
@@ -47,25 +48,30 @@ def main():
         server_socket.listen(QUEUE_LEN)
         while True:
             client_socket, client_address = server_socket.accept()
+            logging.debug('A client has connected to the server || address: ' + ''.join(map(str, client_address)))
             try:
                 while True:
                     request = client_socket.recv(MAX_PACKET).decode()
+                    logging.debug('The command ' + request + ' has been received')
                     print('Received the command: ' + request)
                     if request == 'TIME':
-                        client_socket.send(time().encode())
+                        sent_message = time()
                     elif request == 'NAME':
-                        client_socket.send(NAME.encode())
+                        sent_message = NAME
                     elif request == 'RAND':
-                        client_socket.send(rand().encode())
+                        sent_message = rand()
                     elif request == 'EXIT':
                         client_socket.send('You were disconnected'.encode())
                         break
                     else:
-                        client_socket.send('Invalid command'.encode())
+                        sent_message = 'Invalid command'
+                    client_socket.send(sent_message.encode())
+                    logging.debug('The message ' + sent_message + ' has been sent')
             except socket.error as err:
                  print('received socket error on client socket' + str(err))
             finally:
                  client_socket.close()
+                 logging.debug('The client has been disconnected')
     except socket.error as err:
         print('received socket error on server socket' + str(err))
     finally:
