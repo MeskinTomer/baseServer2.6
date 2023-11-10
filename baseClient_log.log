@@ -1,9 +1,5 @@
 DEBUG:root:The command TIME has been sent to the server
-DEBUG:root:The response 21:03:46 has been received
-DEBUG:root:The command RAND has been sent to the server
-DEBUG:root:The response 4 has been received
-DEBUG:root:The command NAME has been sent to the server
-DEBUG:root:The response my name is jef has been received
+DEBUG:root:The response 10:29:28 has been received
 DEBUG:root:The command EXIT has been sent to the server
 DEBUG:root:The response You were disconnected has been received
 DEBUG:root:The server has disconnected the client

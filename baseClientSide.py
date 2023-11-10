@@ -19,16 +19,16 @@ MAX_PACKET = 1024
 COMMANDS = ['TIME', 'NAME', 'RAND', 'EXIT']
 
 
-def command():
+def command(com):
     """
     validates the command from the user
+    :param com: The command entered by the user
+    :type: string
     :return: either the validated command or either "Invalid" for invalid commands
     """
-    com = input("Enter the desired command")
-    if com in COMMANDS:
-        return com
-    else:
-        return 'Invalid'
+    if com not in COMMANDS:
+        com = 'Invalid'
+    return com
 
 
 def main():
@@ -36,7 +36,8 @@ def main():
     try:
         my_socket.connect(('127.0.0.1', 1729))
         while True:
-            com = command()
+            com = input("Enter the desired command")
+            com = command(com)
             if com != 'Invalid':
                 my_socket.send(com.encode())
                 logging.debug('The command ' + com + ' has been sent to the server')
@@ -47,6 +48,7 @@ def main():
                     logging.debug('The server has disconnected the client')
                     break
             else:
+                logging.debug('Invalid command has attempted to be sent')
                 print('Invalid command')
     except socket.error as err:
         logging.error('Received socket error ' + str(err))
@@ -57,4 +59,9 @@ def main():
 
 
 if __name__ == '__main__':
+    assert command('TIME') == 'TIME'
+    assert command('NAME') == 'NAME'
+    assert command('RAND') == 'RAND'
+    assert command('EXIT') == 'EXIT'
+    assert command('BAND') == 'Invalid'
     main()

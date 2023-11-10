@@ -37,7 +37,7 @@ def rand():
     Generates a random number between 1 and 10
     :return: random_num - the random num
     """
-    random_num = random.randint(1, 11)
+    random_num = random.randint(1, 10)
     return str(random_num)
 
 
@@ -68,16 +68,17 @@ def main():
                     client_socket.send(sent_message.encode())
                     logging.debug('The message ' + sent_message + ' has been sent')
             except socket.error as err:
-                 print('received socket error on client socket' + str(err))
+                print('received socket error on client socket' + str(err))
             finally:
-                 client_socket.close()
-                 logging.debug('The client has been disconnected')
+                client_socket.close()
+                logging.debug('The client has been disconnected')
     except socket.error as err:
         print('received socket error on server socket' + str(err))
     finally:
-        server_socket.close
+        server_socket.close()
 
 
 if __name__ == '__main__':
+    assert rand() in range(1, 11)
+    assert NAME == 'my name is jef'
     main()
-
