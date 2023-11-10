@@ -1,5 +1,18 @@
-DEBUG:root:A client has connected to the server || address: 127.0.0.164985
+DEBUG:root:A client has connected to the server || address: 127.0.0.149430
+DEBUG:root:The client has been disconnected
+DEBUG:root:A client has connected to the server || address: 127.0.0.149431
 DEBUG:root:The command TIME has been received
-DEBUG:root:The message 10:29:28 has been sent
+DEBUG:root:The message 11:07:18 has been sent
+DEBUG:root:The command RAND has been received
+DEBUG:root:The message 10 has been sent
+DEBUG:root:The command NAME has been received
+DEBUG:root:The message my name is jef has been sent
+DEBUG:root:The command EXIT has been received
+DEBUG:root:The client has been disconnected
+DEBUG:root:A client has connected to the server || address: 127.0.0.149432
+DEBUG:root:The command TIME has been received
+DEBUG:root:The message 11:08:26 has been sent
+DEBUG:root:The command RAND has been received
+DEBUG:root:The message 7 has been sent
 DEBUG:root:The command EXIT has been received
 DEBUG:root:The client has been disconnected

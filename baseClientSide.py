@@ -31,6 +31,22 @@ def command(com):
     return com
 
 
+def protocol_send(message):
+    message_len = len(message)
+    final_message = str(message_len) + '!' + message
+    return final_message
+
+
+def protocol_receive(my_socket):
+    cur_char = ''
+    message_len = ''
+    while cur_char != '!':
+        cur_char = my_socket.recv(1).decode()
+        message_len += cur_char
+    message_len = message_len[:-1]
+    return my_socket.recv(int(message_len)).decode()
+
+
 def main():
     my_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     try:
@@ -39,9 +55,9 @@ def main():
             com = input("Enter the desired command")
             com = command(com)
             if com != 'Invalid':
-                my_socket.send(com.encode())
+                my_socket.send(protocol_send(com).encode())
                 logging.debug('The command ' + com + ' has been sent to the server')
-                response = my_socket.recv(MAX_PACKET).decode()
+                response = protocol_receive(my_socket)
                 logging.debug('The response ' + response + ' has been received')
                 print(response)
                 if response == 'You were disconnected':
@@ -64,4 +80,5 @@ if __name__ == '__main__':
     assert command('RAND') == 'RAND'
     assert command('EXIT') == 'EXIT'
     assert command('BAND') == 'Invalid'
+    assert protocol_send('hello') == '5!hello'
     main()

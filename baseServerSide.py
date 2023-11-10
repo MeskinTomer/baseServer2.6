@@ -41,6 +41,22 @@ def rand():
     return str(random_num)
 
 
+def protocol_send(message):
+    message_len = len(message)
+    final_message = str(message_len) + '!' + message
+    return final_message
+
+
+def protocol_receive(my_socket):
+    cur_char = ''
+    message_len = ''
+    while cur_char != '!':
+        cur_char = my_socket.recv(1).decode()
+        message_len += cur_char
+    message_len = message_len[:-1]
+    return my_socket.recv(int(message_len)).decode()
+
+
 def main():
     server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     try:
@@ -51,7 +67,7 @@ def main():
             logging.debug('A client has connected to the server || address: ' + ''.join(map(str, client_address)))
             try:
                 while True:
-                    request = client_socket.recv(MAX_PACKET).decode()
+                    request = protocol_receive(client_socket)
                     logging.debug('The command ' + request + ' has been received')
                     print('Received the command: ' + request)
                     if request == 'TIME':
@@ -61,11 +77,11 @@ def main():
                     elif request == 'RAND':
                         sent_message = rand()
                     elif request == 'EXIT':
-                        client_socket.send('You were disconnected'.encode())
+                        client_socket.send(protocol_send('You were disconnected').encode())
                         break
                     else:
                         sent_message = 'Invalid command'
-                    client_socket.send(sent_message.encode())
+                    client_socket.send(protocol_send(sent_message).encode())
                     logging.debug('The message ' + sent_message + ' has been sent')
             except socket.error as err:
                 print('received socket error on client socket' + str(err))
@@ -79,6 +95,6 @@ def main():
 
 
 if __name__ == '__main__':
-    assert rand() in range(1, 11)
+    assert int(rand()) in range(1, 11)
     assert NAME == 'my name is jef'
     main()

@@ -1,5 +1,22 @@
 DEBUG:root:The command TIME has been sent to the server
-DEBUG:root:The response 10:29:28 has been received
+ERROR:root:Received socket error [WinError 10054] An existing connection was forcibly closed by the remote host
+DEBUG:root:The client socket has been closed
+DEBUG:root:The command TIME has been sent to the server
+DEBUG:root:The response 11:07:18 has been received
+DEBUG:root:The command RAND has been sent to the server
+DEBUG:root:The response 10 has been received
+DEBUG:root:The command NAME has been sent to the server
+DEBUG:root:The response my name is jef has been received
+DEBUG:root:Invalid command has attempted to be sent
+DEBUG:root:The command EXIT has been sent to the server
+DEBUG:root:The response You were disconnected has been received
+DEBUG:root:The server has disconnected the client
+DEBUG:root:The client socket has been closed
+DEBUG:root:Invalid command has attempted to be sent
+DEBUG:root:The command TIME has been sent to the server
+DEBUG:root:The response 11:08:26 has been received
+DEBUG:root:The command RAND has been sent to the server
+DEBUG:root:The response 7 has been received
 DEBUG:root:The command EXIT has been sent to the server
 DEBUG:root:The response You were disconnected has been received
 DEBUG:root:The server has disconnected the client
