@@ -16,3 +16,19 @@ DEBUG:root:The command RAND has been received
 DEBUG:root:The message 7 has been sent
 DEBUG:root:The command EXIT has been received
 DEBUG:root:The client has been disconnected
+DEBUG:root:A client has connected to the server || address: 127.0.0.154419
+DEBUG:root:The command TIME has been received
+DEBUG:root:The message 10:17:40 has been sent
+DEBUG:root:The command RAND has been received
+DEBUG:root:The message 2 has been sent
+DEBUG:root:The command EXIT has been received
+DEBUG:root:The client has been disconnected
+DEBUG:root:A client has connected to the server || address: 127.0.0.154441
+DEBUG:root:The command TIME has been received
+DEBUG:root:The message 10:18:01 has been sent
+DEBUG:root:The command NAME has been received
+DEBUG:root:The message my name is jef has been sent
+DEBUG:root:The command TIME has been received
+DEBUG:root:The message 10:18:14 has been sent
+DEBUG:root:The command EXIT has been received
+DEBUG:root:The client has been disconnected

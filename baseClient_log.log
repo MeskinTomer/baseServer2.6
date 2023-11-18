@@ -21,3 +21,22 @@ DEBUG:root:The command EXIT has been sent to the server
 DEBUG:root:The response You were disconnected has been received
 DEBUG:root:The server has disconnected the client
 DEBUG:root:The client socket has been closed
+DEBUG:root:The command TIME has been sent to the server
+DEBUG:root:The response 10:17:40 has been received
+DEBUG:root:The command RAND has been sent to the server
+DEBUG:root:The response 2 has been received
+DEBUG:root:Invalid command has attempted to be sent
+DEBUG:root:The command EXIT has been sent to the server
+DEBUG:root:The response You were disconnected has been received
+DEBUG:root:The server has disconnected the client
+DEBUG:root:The client socket has been closed
+DEBUG:root:The command TIME has been sent to the server
+DEBUG:root:The response 10:18:01 has been received
+DEBUG:root:The command NAME has been sent to the server
+DEBUG:root:The response my name is jef has been received
+DEBUG:root:The command TIME has been sent to the server
+DEBUG:root:The response 10:18:14 has been received
+DEBUG:root:The command EXIT has been sent to the server
+DEBUG:root:The response You were disconnected has been received
+DEBUG:root:The server has disconnected the client
+DEBUG:root:The client socket has been closed

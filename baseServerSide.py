@@ -42,12 +42,24 @@ def rand():
 
 
 def protocol_send(message):
+    """
+    fits the message to be able to be sent using the protocol
+    :param message: The message entered by the user
+    :type: string
+    :return: the message after it hsa been configured
+    """
     message_len = len(message)
     final_message = str(message_len) + '!' + message
     return final_message
 
 
 def protocol_receive(my_socket):
+    """
+    receives the message sent to the socket
+    :param my_socket: The socket from which the message will be received
+    :type: Socket
+    :return: the received message after it hsa been fully decoded
+    """
     cur_char = ''
     message_len = ''
     while cur_char != '!':
